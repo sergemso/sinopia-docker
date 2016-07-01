@@ -2,11 +2,15 @@
 storage: ./storage/cache
 
 web:
-  # enable: true
+  enable: true
 
   title: Sinopia
   # logo: logo.png
   # template: custom.hbs
+
+auth:
+ htpasswd:
+   file: ./htpasswd
 
 # a list of other known repositories we can talk to
 uplinks:
@@ -44,7 +48,8 @@ packages:
   '@*/*':
     # scoped packages
     allow_access: $all
-    allow_publish: $authenticated
+    allow_publish: $all
+    proxy: npmjs
 
   '*':
     # allow all users (including non-authenticated users) to read and
@@ -56,7 +61,7 @@ packages:
 
     # allow all known users to publish packages
     # (anyone can register by default, remember?)
-    allow_publish: $authenticated
+    allow_publish: $all
 
     # if package is not available locally, proxy requests to 'npmjs' registry
     proxy: npmjs

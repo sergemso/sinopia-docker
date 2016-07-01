@@ -16,6 +16,7 @@ USER daemon
 ADD config.yaml /sinopia/config.yaml
 
 EXPOSE 4873
-VOLUME /sinopia/storage
+
+VOLUME /sinopia
 
 CMD ["sinopia"]
